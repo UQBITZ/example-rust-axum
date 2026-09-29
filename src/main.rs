@@ -1,8 +1,9 @@
 use axum::{response::Html, routing::get, Router};
 
-const MARKER: &str = "uqbitz-example-rust-axum-v1";
+const MARKER: &str = "uqbitz-example-rust-axum-v2";
 
 async fn index() -> Html<String> {
+    let probe = std::env::var("START_PROBE").unwrap_or_else(|_| "unset".to_string());
     Html(format!(
         r#"<!doctype html>
 <html lang="en">
@@ -11,6 +12,7 @@ async fn index() -> Html<String> {
 <h1>Rust + axum on UQBITZ</h1>
 <p>This page is rendered by a compiled Rust binary running in a Firecracker microVM.</p>
 <p><code id="marker">{MARKER}</code></p>
+<p>start probe: <code id="start-probe">{probe}</code></p>
 </body>
 </html>"#
     ))
