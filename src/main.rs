@@ -1,6 +1,6 @@
 use axum::{response::Html, routing::get, Router};
 
-const MARKER: &str = "uqbitz-example-rust-axum-v2";
+const MARKER: &str = "uqbitz-example-rust-axum-v3";
 
 async fn index() -> Html<String> {
     let probe = std::env::var("START_PROBE").unwrap_or_else(|_| "unset".to_string());
